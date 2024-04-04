@@ -1,8 +1,11 @@
 from flask import Flask, request, jsonify
 import pickle
 from datetime import datetime, timedelta
+from flask import Flask
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app) # This will enable CORS for all routes
 
 # Load your models
 with open('knndepth.pkl', 'rb') as f:

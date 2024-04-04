@@ -4,23 +4,22 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Layout from './Layout'
 import Home from './Components/Home/Home'
-
+import Map from './Components/Map/Map'
 
 
 
 
 const router = createBrowserRouter([
-  
+
   {
     path: '/',
-    element:  <Layout/>,
+    element: <Layout />,
     children: [{
       path: "",
-      element: <Home/>
-    }
-  
-  
-  ]
+      element: <Home />,
+    },
+
+    ]
   }
 
 ]
@@ -29,6 +28,6 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   </React.StrictMode>,
 )
