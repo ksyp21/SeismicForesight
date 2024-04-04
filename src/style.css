@@ -1,0 +1,12 @@
+  .active-tab,
+  .non-active-tab {
+    width: 100%;
+    height: 4px;
+    background: brown;
+    margin-top: 8px;
+  }
+  
+  .non-active-tab {
+    background-color: transparent;
+  }
+  
