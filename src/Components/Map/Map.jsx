@@ -30,6 +30,7 @@ const Map = () => {
     };
 
     return (
+
         <MapContainer center={[28.3949, 84.1240]} zoom={2}>
             <LayersControl position="topright">
                 <LayersControl.BaseLayer checked name="Stadia Satellite">

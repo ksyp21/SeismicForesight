@@ -4,9 +4,8 @@ import './index.css'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Layout from './Layout'
 import Home from './Components/Home/Home'
-import Map from './Components/Map/Map'
-
-
+import Form from './Components/Form/Form'
+import Signup from './Components/Signup/Signup'
 
 
 const router = createBrowserRouter([
@@ -20,7 +19,17 @@ const router = createBrowserRouter([
     },
 
     ]
+  },
+  {
+    path: '/form',
+    element: <Form />
+  },
+  {
+    path: '/signup',
+    element: <Signup />
   }
+
+
 
 ]
 
