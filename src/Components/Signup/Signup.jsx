@@ -16,6 +16,13 @@ const Signup = () => {
                             />
                         </div>
                         <div>
+                            <label className='text-lg font-medium'>Location</label>
+                            <input
+                                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                                placeholder='Enter location for alert'
+                            />
+                        </div>
+                        <div>
                             <label className='text-lg font-medium'>Email</label>
                             <input
                                 className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
@@ -35,7 +42,7 @@ const Signup = () => {
                     <div className='mt-8 flex flex-col gap-y-4'>
                         <button className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] easy-in-out py-3 rounded-xl bg-violet-500 text-white text-lg font-bold'>Sign up</button>
                         <button
-                            className ="flex items-center justify-center py-2 px-20 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                            className="flex items-center justify-center py-2 px-20 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
                         >
                             <svg
                                 viewBox="0 0 24 24"
