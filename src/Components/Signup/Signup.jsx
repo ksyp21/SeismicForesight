@@ -110,7 +110,7 @@ const Signup = () => {
                                     fill="#FFF"
                                 ></path>
                             </svg>
-                            <span class="ml-2">Sign up with Google</span>
+                            <span className ="ml-2">Sign up with Google</span>
                         </button>
 
                     </div>
