@@ -15,13 +15,7 @@ const Signup = () => {
                                 placeholder='Enter your name'
                             />
                         </div>
-                        <div>
-                            <label className='text-lg font-medium'>Location</label>
-                            <input
-                                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
-                                placeholder='Enter location for alert'
-                            />
-                        </div>
+
                         <div>
                             <label className='text-lg font-medium'>Email</label>
                             <input
@@ -110,7 +104,7 @@ const Signup = () => {
                                     fill="#FFF"
                                 ></path>
                             </svg>
-                            <span className ="ml-2">Sign up with Google</span>
+                            <span className="ml-2">Sign up with Google</span>
                         </button>
 
                     </div>
