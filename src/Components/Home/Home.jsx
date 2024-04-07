@@ -1,13 +1,16 @@
 import React from 'react'
 import Map from '../Map/Map'
+import CountrySearch from '../SearchBar/CountrySearch'
+import Search from '../SearchBar/Search'
 
 
 function Home() {
   return (
-    <div className='text-2xl text-center'>
-
+    <>
+    <CountrySearch/>
       <Map />
-    </div>
+    <Search/>
+    </>
   )
 }
 
