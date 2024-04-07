@@ -12,14 +12,15 @@ const tabs = [
     id: "about-us",
     text: "About ",
   },
+
   {
-    id: "dataset",
-    text: "Dataset",
+    id: "country",
+    text: "Country",
   },
   {
-    id: "contact",
-    text: "CONTACT",
-  },
+    id: "signup",
+    text: "Sign Up"
+  }
 ];
 
 export default function Header() {
