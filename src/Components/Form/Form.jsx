@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 
 const Form = () => {
@@ -29,9 +30,9 @@ const Form = () => {
                         </button>
                     </div>
                     <div className='mt-8 flex flex-col gap-y-4'>
-                        <button className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] easy-in-out py-3 rounded-xl bg-violet-500 text-white text-lg font-bold'>Sign in</button>
+                        <button className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] easy-in-out py-3 rounded-xl bg-violet-500 text-white text-lg font-bold'>Log In</button>
                         <button
-                            class="flex items-center justify-center py-2 px-20 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                            className ="flex items-center justify-center py-2 px-20 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
                         >
                             <svg
                                 viewBox="0 0 24 24"
@@ -99,11 +100,13 @@ const Form = () => {
                                     fill="#FFF"
                                 ></path>
                             </svg>
-                            <span class="ml-2">Sign in with Google</span>
+                            <span class="ml-2">Log In in with Google</span>
                         </button>
                         <div className='mt-8 flex justify-center items-center'>
                             <p className='font-medium text-base'>Don't have an account?</p>
+                            <Link to='/signup'>
                             <button className='text-violet-500 text-base font-medium ml-2'>Sign Up</button>
+                            </Link>
                         </div>
                     </div>
                 </div>

@@ -2,24 +2,29 @@ import { useState } from "react";
 import { easeInCubic, FlipProvider, useFlip } from "react-easy-flip";
 import "../../style.css";
 import logo from '../../assets/images/logo.png';
+import { NavLink, Link } from "react-router-dom";
 
 const tabs = [
   {
     id: "home",
     text: "HOME",
+    link: "/"
   },
   {
     id: "about-us",
     text: "About ",
+    link: "/aboutpage"
   },
 
   {
     id: "country",
     text: "Country",
+    link: "/"
   },
   {
-    id: "signup",
-    text: "Sign Up"
+    id: "login",
+    text: "Log In",
+    link: "/login"
   }
 ];
 
@@ -46,10 +51,11 @@ export default function Header() {
         </div>
         <div className="flex w-1/2 justify-center items-center">
           {tabs.map((item) => (
-            <div
+            <NavLink
               onClick={() => selectedTabHandler(item.id)}
               className="flex-col w-full text-center cursor-pointer hover:text-red-800"
               key={item.id} // Use unique key prop
+              to={item.link}
             >
               {item.text}
               {selectedTab === item.id ? (
@@ -57,7 +63,7 @@ export default function Header() {
               ) : (
                 <div className="non-active-tab" />
               )}
-            </div>
+            </NavLink>
           ))}
         </div>
       </div>
