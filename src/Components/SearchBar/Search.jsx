@@ -45,6 +45,8 @@ function Search({ setMarkers }) {
           value={longitude}
           onChange={(e) => setLongitude(e.target.value)}
         />
+
+
         <div className='flex flex-row gap-4'>
           <label htmlFor="from">From: &nbsp;</label>
           <DatePicker
