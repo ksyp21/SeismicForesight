@@ -1,25 +1,27 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
 
-    const handleSignup = async () => {
+    async function save(event) {
+        event.preventDefault();
         try {
-            const response = await axios.post('http://localhost:8080/register', {
-                name,
-                email,
-                password
+            await axios.post("http://localhost:8080/api/v1/user/save", {
+                name: name,
+                email: email,
+                password: password,
             });
-            console.log(response.data); // Assuming your backend sends back a token
-            // Handle successful registration (e.g., redirect user)
-        } catch (error) {
-            console.error('Registration failed:', error);
-            // Handle registration error (e.g., show error message)
+            alert("User Registation Successfully");
+            navigate('/login');
+        } catch (err) {
+            alert(err);
         }
-    };
+    }
 
     return (
         <div className='flex w-full h-screen bg-gray-100'>
@@ -35,7 +37,9 @@ const Signup = () => {
                                 type='text'
                                 placeholder='Enter your name'
                                 value={name}
-                                onChange={(e) => setName(e.target.value)}
+                                onChange={(event) => {
+                                    setName(event.target.value);
+                                }}
                             />
                         </div>
 
@@ -46,7 +50,9 @@ const Signup = () => {
                                 type='email'
                                 placeholder='Enter your email'
                                 value={email}
-                                onChange={(e) => setEmail(e.target.value)}
+                                onChange={(event) => {
+                                    setEmail(event.target.value);
+                                }}
                             />
                         </div>
                         <div>
@@ -56,14 +62,16 @@ const Signup = () => {
                                 type='password'
                                 placeholder='Enter your password'
                                 value={password}
-                                onChange={(e) => setPassword(e.target.value)}
+                                onChange={(event) => {
+                                    setPassword(event.target.value);
+                                }}
                             />
                         </div>
                     </div>
                     <div className='mt-8 flex flex-col gap-y-4'>
                         <button
-                            className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] easy-in-out py-3 rounded-xl bg-violet-500 text-white text-lg font-bold'
-                            onClick={handleSignup}
+                            type="submit" className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] easy-in-out py-3 rounded-xl bg-violet-500 text-white text-lg font-bold'
+                            onClick={save}
                         >
                             Sign up
                         </button>

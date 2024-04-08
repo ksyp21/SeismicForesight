@@ -7,6 +7,7 @@ import Home from './Components/Home/Home'
 import Form from './Components/Form/Form'
 import Signup from './Components/Signup/Signup'
 import AboutPage from './Components/About/AboutPage'
+import Alert from './Components/Alert/Alert'
 
 
 const router = createBrowserRouter([
@@ -17,10 +18,14 @@ const router = createBrowserRouter([
     children: [{
       path: "",
       element: <Home />,
-    }, 
+    },
     {
       path: '/aboutpage',
-      element: <AboutPage/>
+      element: <AboutPage />
+    },
+    {
+      path: '/alert',
+      element: <Alert />
     },
     ]
   },

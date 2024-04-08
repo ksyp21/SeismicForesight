@@ -19,7 +19,7 @@ const tabs = [
   {
     id: "alert",
     text: "Alert",
-    link: "/"
+    link: "/alert"
   },
   {
     id: "login",

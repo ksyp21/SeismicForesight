@@ -134,7 +134,7 @@ const Map = () => {
             </MapContainer>
 
 
-            <Search/>
+            <Search />
         </div>
 
 
