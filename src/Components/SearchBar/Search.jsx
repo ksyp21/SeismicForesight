@@ -12,7 +12,7 @@ function Search() {
 
     <>
 
-      <div className="absolute z-0 pb-[6rem] mx-2">
+      <div className="absolute z-0 pb-[6rem] mx-2 my-8 text-lg">
 
         <label htmlFor="latitude">Latitude:  &nbsp;
           <input type="text" placeholder='Enter Latitude' className='mb-8 border rounded-lg border-gray-200' />
@@ -25,7 +25,7 @@ function Search() {
 
 
 
-        <div>
+        <div className='flex flex-row gap-4'>
           <label htmlFor="from">From: &nbsp;</label>
           <DatePicker
             selected={startDate}
@@ -46,6 +46,11 @@ function Search() {
             className="shadow-lg"
           />
         </div>
+
+
+        <button className='rounded-xl bg-green-500 px-4 text-white py-2 my-4'>
+            Submit
+        </button>
       </div>
     </>
   )
