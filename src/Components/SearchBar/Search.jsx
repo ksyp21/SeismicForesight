@@ -12,7 +12,7 @@ function Search() {
 
     <>
 
-      <div className="absolute z-0 pb-[6rem] mx-2 my-8 text-lg">
+      <div className="absolute z-0 pb-[6rem] mx-2 my-8 text-lg border border-gray-100 shadow-xl">
 
         <label htmlFor="latitude">Latitude:  &nbsp;
           <input type="text" placeholder='Enter Latitude' className='mb-8 border rounded-lg border-gray-200' />

@@ -17,8 +17,8 @@ const tabs = [
   },
 
   {
-    id: "country",
-    text: "Country",
+    id: "alert",
+    text: "Alert",
     link: "/"
   },
   {

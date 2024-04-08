@@ -17,6 +17,7 @@
     "react-dom": "^18.2.0",
     "react-easy-flip": "^4.0.3",
     "react-google-button": "^0.7.2",
+    "react-icons": "^5.0.1",
     "react-leaflet": "^4.2.1",
     "react-router-dom": "^6.22.3"
   },
