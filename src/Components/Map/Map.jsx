@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMapEvents, LayersControl } from 'react-leaflet';
 import "leaflet/dist/leaflet.css";
 import axios from 'axios'; // Import axios
+import Search from '../SearchBar/Search';
 
 
 const Map = () => {
@@ -131,6 +132,9 @@ const Map = () => {
 
 
             </MapContainer>
+
+
+            <Search/>
         </div>
 
 
