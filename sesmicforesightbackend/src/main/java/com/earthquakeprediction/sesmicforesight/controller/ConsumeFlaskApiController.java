@@ -20,7 +20,7 @@ public class ConsumeFlaskApiController {
 
     @PostMapping("/predict")
     public PredictionResponse getPrediction(@RequestBody PredictionRequest request) {
-        String url = "http://127.0.0.1:4000/predict"; // Replace with your FastAPI endpoint URL
+        String url = "http://127.0.0.1:4000/predict";
         return restTemplate.postForObject(url, request, PredictionResponse.class);
     }
 
