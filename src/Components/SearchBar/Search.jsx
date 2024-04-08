@@ -30,7 +30,7 @@ function Search({ setMarkers }) {
 
   return (
     <>
-      <div className="absolute z-0 pb-[9rem] w-screen mx-2 my-8 text-lg text-center items-center justify-center bg-gray-100 shadow-lg sm:overflow-x-hidden ">
+      <div className="absolute z-0 pb-[9rem] w-screen mx-2 my-8 text-lg text-center items-center justify-center bg-gray-100 shadow-lg sm:overflow-hidden ">
 
 
         <div className='text-2xl py-4 my-4'>
