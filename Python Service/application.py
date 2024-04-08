@@ -8,9 +8,9 @@ app = Flask(__name__)
 CORS(app) # This will enable CORS for all routes
 
 # Load your models
-with open('knndepth.pkl', 'rb') as f:
+with open('depthfinal.pkl', 'rb') as f:
     modeldepth = pickle.load(f)
-with open('randommagnitude.pkl', 'rb') as f:
+with open('modelmagnutude.pkl', 'rb') as f:
     modelmagnitude = pickle.load(f)
 
 class PredictionResponse:
@@ -66,24 +66,21 @@ def predict_with_timestamp():
 @app.route('/predictRange', methods=['POST'])
 def predict_range():
     request_data = request.get_json()
-    latitude = request_data['latitude']
-    longitude = request_data['longitude']
+    # Convert latitude and longitude to float
+    latitude = float(request_data['latitude'])
+    longitude = float(request_data['longitude'])
     from_date = request_data['from_date']
     to_date = request_data['to_date']
     
-    # Parse the date strings into datetime objects
     from_date = datetime.strptime(from_date, '%Y-%m-%d')
     to_date = datetime.strptime(to_date, '%Y-%m-%d')
-    
-    # Convert the datetime objects to Unix time if needed
-    from_date_unix = from_date.timestamp()
-    to_date_unix = to_date.timestamp()
     
     responses = []
     current_date = from_date
 
     while current_date <= to_date:
         time_unix = current_date.timestamp()
+        # Ensure latitude and longitude are passed as floats
         depth_prediction = modeldepth.predict([[latitude, longitude]])
         magnitude_prediction = modelmagnitude.predict([[latitude, longitude, depth_prediction[0], time_unix]])
         responses.append(PredictionResponse(date=current_date.strftime('%Y-%m-%d'), depth_prediction=depth_prediction[0], magnitude_prediction=magnitude_prediction[0]))
