@@ -6,6 +6,7 @@ import Layout from './Layout'
 import Home from './Components/Home/Home'
 import Form from './Components/Form/Form'
 import Signup from './Components/Signup/Signup'
+import AboutPage from './Components/About/AboutPage'
 
 
 const router = createBrowserRouter([
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
       path: "",
       element: <Home />,
     }, 
+    {
+      path: '/aboutpage',
+      element: <AboutPage/>
+    },
     ]
   },
   {
@@ -27,6 +32,7 @@ const router = createBrowserRouter([
     path: '/login',
     element: <Form />
   },
+
 ]
 )
 
