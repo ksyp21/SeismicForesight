@@ -1,6 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const Signup = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleSignup = async () => {
+        try {
+            const response = await axios.post('http://localhost:8080/register', {
+                name,
+                email,
+                password
+            });
+            console.log(response.data); // Assuming your backend sends back a token
+            // Handle successful registration (e.g., redirect user)
+        } catch (error) {
+            console.error('Registration failed:', error);
+            // Handle registration error (e.g., show error message)
+        }
+    };
+
     return (
         <div className='flex w-full h-screen bg-gray-100'>
             <div className='w-full flex items-center justify-center lg:w-1/2'>
@@ -12,7 +32,10 @@ const Signup = () => {
                             <label className='text-lg font-medium'>Name</label>
                             <input
                                 className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                                type='text'
                                 placeholder='Enter your name'
+                                value={name}
+                                onChange={(e) => setName(e.target.value)}
                             />
                         </div>
 
@@ -20,24 +43,31 @@ const Signup = () => {
                             <label className='text-lg font-medium'>Email</label>
                             <input
                                 className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                                type='email'
                                 placeholder='Enter your email'
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
                             <label className='text-lg font-medium'>Password</label>
                             <input
                                 className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
-                                placeholder='Enter your password'
                                 type='password'
+                                placeholder='Enter your password'
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
-
                     </div>
                     <div className='mt-8 flex flex-col gap-y-4'>
-                        <button className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] easy-in-out py-3 rounded-xl bg-violet-500 text-white text-lg font-bold'>Sign up</button>
                         <button
-                            className="flex items-center justify-center py-2 px-20 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+                            className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] easy-in-out py-3 rounded-xl bg-violet-500 text-white text-lg font-bold'
+                            onClick={handleSignup}
                         >
+                            Sign up
+                        </button>
+                        <button className="flex items-center justify-center py-2 px-20 bg-white hover:bg-gray-200 focus:ring-blue-500 focus:ring-offset-blue-200 text-gray-700 w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg">
                             <svg
                                 viewBox="0 0 24 24"
                                 height="25"
@@ -106,21 +136,15 @@ const Signup = () => {
                             </svg>
                             <span className="ml-2">Sign up with Google</span>
                         </button>
-
                     </div>
                 </div>
-
             </div>
             <div className='hidden relative lg:flex h-full w-1/2 items-center justify-center bg-gray-200'>
-
                 <div className='w-60 h-60 bg-gradient-to-tr from-lime-500 to bg-blue-500 rounded-full animate-spin' />
                 <div className='w-full h-1/2 absolute bottom-0 bg-white/10 backdrop-blur-lg' />
-
             </div>
         </div>
+    );
+};
 
-
-    )
-}
-
-export default Signup
+export default Signup;
