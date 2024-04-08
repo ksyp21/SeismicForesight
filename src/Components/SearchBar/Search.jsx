@@ -30,7 +30,15 @@ function Search({ setMarkers }) {
 
   return (
     <>
-      <div className="absolute z-0 pb-[6rem] mx-2 my-8 text-lg">
+      <div className="absolute z-0 pb-[9rem] w-screen mx-2 my-8 text-lg text-center items-center justify-center bg-gray-100 shadow-lg sm:overflow-x-hidden ">
+
+
+        <div className='text-2xl py-4 my-4'>
+            Enter latitude and longitude to generate report:
+        </div>
+
+        <div className='text-lg '>
+        <label htmlFor="latitude">Latitude: &nbsp;</label>
         <input
           type="text"
           placeholder="Enter Latitude"
@@ -38,6 +46,11 @@ function Search({ setMarkers }) {
           value={latitude}
           onChange={(e) => setLatitude(e.target.value)}
         />
+        </div>
+
+
+        <div>
+            <label htmlFor="longitude">Longitude: &nbsp;</label>
         <input
           type="text"
           placeholder="Enter Longitude"
@@ -46,8 +59,11 @@ function Search({ setMarkers }) {
           onChange={(e) => setLongitude(e.target.value)}
         />
 
+        </div>
 
-        <div className='flex flex-row gap-4'>
+
+        <div className='grid gap-6'>
+            <div>
           <label htmlFor="from">From: &nbsp;</label>
           <DatePicker
             selected={startDate}
@@ -57,6 +73,9 @@ function Search({ setMarkers }) {
             onChange={date => setStartDate(date)}
             className='border border-none shadow-lg'
           />
+            </div>
+
+            <div>
           <label htmlFor="to">To: &nbsp;</label>
           <DatePicker
             selected={endDate}
@@ -67,9 +86,10 @@ function Search({ setMarkers }) {
             onChange={date => setEndDate(date)}
             className="shadow-lg"
           />
+            </div>
         </div>
         <button onClick={handleSubmit} className="rounded-xl bg-green-500 px-4 text-white py-2 my-4">
-          Submit
+          Generate Report
         </button>
         <div>
           {predictions.map((prediction, index) => (
