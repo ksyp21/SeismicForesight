@@ -1,74 +1,92 @@
-import React, { useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, Popup, useMapEvents, LayersControl, useMap } from 'react-leaflet';
-import "leaflet/dist/leaflet.css";
-import 'leaflet.locatecontrol'; // Import plugin
-import 'leaflet.locatecontrol/dist/L.Control.Locate.min.css'; // Import styles
-import L from 'leaflet'; // Import L from leaflet to start using the plugin
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
-const Alert = () => {
 
-    const LocateControl = () => {
-        const map = useMap();
+function Alert() {
+    const [latitude, setLatitude] = useState('');
+    const [longitude, setLongitude] = useState('');
+    const [email, setEmail] = useState('');
+    const navigate = useNavigate();
 
-        useEffect(() => {
-            const lc = L.control.locate().addTo(map);
-            return () => {
-                map.removeControl(lc);
-            };
-        }, []); // Empty dependency array to run only once
 
-        return null;
-    };
+    async function save(event) {
+        event.preventDefault();
+        try {
+            await axios.post("http://localhost:8080/api/location", {
+                latitude: latitude,
+                longitude: longitude,
+                email: email,
+
+            });
+            alert("Alert activated for the location");
+            navigate('/');
+        } catch (err) {
+            alert(err);
+        }
+    }
 
     return (
-        <div>
+        <div className='flex w-full screen bg-gray-100'>
+            <div className='w-full flex items-center justify-center '>
+                <div className='bg-white px-20 py-20 rounded-3xl border-2 border-gray-200'>
+                    <h1 className='text-5xl font-semibold'>Want Alerts? </h1>
+                    <p className='font-medium text-lg text-gray-500 mt-4'>Please enter your Location!</p>
+                    <div className='mt-8'>
+                        <div>
+                            <label className='text-lg font-medium'>Latitude</label>
+                            <input
+                                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                                type='number'
 
-
-            {/* Card container */}
-            <div style={{
-                width: '600px', // Adjust the width as needed
-                height: '400px', // Adjust the height as needed
-                margin: '0 auto', // Center the card horizontally
-                border: '1px solid #ccc', // Optional: Add a border
-                borderRadius: '5px', // Optional: Add rounded corners
-                overflow: 'hidden', // Ensure the map does not overflow the card
-                boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)', // Optional: Add a shadow for depth
-            }}>
-                <MapContainer center={[28.3949, 84.1240]} zoom={5} style={{ height: '100%', width: '100%' }}>
-                    <LocateControl />
-                    <LayersControl position="topright">
-                        <LayersControl.BaseLayer checked name="Stadia Satellite">
-                            <TileLayer
-
-                                url='https://tiles.stadiamaps.com/tiles/alidade_satellite/{z}/{x}/{y}{r}.jpg'
+                                value={latitude}
+                                onChange={(event) => {
+                                    setLatitude(event.target.value);
+                                }}
                             />
-                        </LayersControl.BaseLayer>
-                        <LayersControl.BaseLayer name="OpenStreetMap BZH">
-                            <TileLayer
+                        </div>
 
-                                url='https://tile.openstreetmap.bzh/br/{z}/{x}/{y}.png'
+                        <div>
+                            <label className='text-lg font-medium'>Longitude</label>
+                            <input
+                                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                                type='number'
+
+                                value={longitude}
+                                onChange={(event) => {
+                                    setLongitude(event.target.value);
+                                }}
                             />
-                        </LayersControl.BaseLayer>
-                        <LayersControl.BaseLayer name="Stadia Smooth Dark">
-                            <TileLayer
+                        </div>
 
-                                url='https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
+                        <div>
+                            <label className='text-lg font-medium'>Email</label>
+                            <input
+                                className='w-full border-2 border-gray-100 rounded-xl p-4 mt-1 bg-transparent'
+                                type='email'
+
+                                value={email}
+                                onChange={(event) => {
+                                    setEmail(event.target.value);
+                                }}
                             />
-                        </LayersControl.BaseLayer>
-                        <LayersControl.BaseLayer name="Stamen Toner">
-                            <TileLayer
+                        </div>
 
-                                url='https://tiles.stadiamaps.com/tiles/stamen_toner/{z}/{x}/{y}{r}.png'
-                            />
-                        </LayersControl.BaseLayer>
-                    </LayersControl>
+                    </div>
+                    <div className='mt-8 flex flex-col gap-y-4'>
+                        <button
+                            type="submit" className='active:scale-[.98] active:duration-75 transition-all hover:scale-[1.01] easy-in-out py-3 rounded-xl bg-violet-500 text-white text-lg font-bold'
+                            onClick={save}
+                        >
+                            Get Alerts !
+                        </button>
 
-                </MapContainer>
-
+                    </div>
+                </div>
             </div>
-            <center>Get alert for earthquake with out system. Pin your location</center>
+
         </div>
     );
-};
+}
 
 export default Alert;
